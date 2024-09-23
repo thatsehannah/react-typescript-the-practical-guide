@@ -1,13 +1,20 @@
 import React from 'react';
 
-const CourseGoal = () => {
+interface CourseGoalProps {
+  title: string;
+  description: string;
+}
+
+const CourseGoal = (props: CourseGoalProps) => {
+  const { title, description } = props;
+
   return (
     <article>
       <div>
-        <h2>TITLE</h2>
-        <p>DESCRIPTION</p>
+        <h2>{title}</h2>
+        <p>{description}</p>
       </div>
-      <button>delete</button>
+      <button>Delete</button>
     </article>
   );
 };
