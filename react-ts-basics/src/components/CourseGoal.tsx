@@ -1,11 +1,10 @@
 import React, { FC, PropsWithChildren } from 'react';
 
-// interface CourseGoalProps {
-//   title: string;
-//   children: React.ReactNode;
-// }
+interface BaseProps {
+  title: string;
+}
 
-type CourseGoalProps = PropsWithChildren<{ title: string }>;
+type CourseGoalProps = PropsWithChildren<BaseProps>;
 
 const CourseGoal: FC<CourseGoalProps> = ({ title, children }) => {
   return (
