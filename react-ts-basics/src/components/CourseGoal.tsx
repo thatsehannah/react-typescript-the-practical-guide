@@ -2,17 +2,17 @@ import React from 'react';
 
 interface CourseGoalProps {
   title: string;
-  description: string;
+  children: React.ReactNode;
 }
 
 const CourseGoal = (props: CourseGoalProps) => {
-  const { title, description } = props;
+  const { title, children } = props;
 
   return (
     <article>
       <div>
         <h2>{title}</h2>
-        <p>{description}</p>
+        {children}
       </div>
       <button>Delete</button>
     </article>
