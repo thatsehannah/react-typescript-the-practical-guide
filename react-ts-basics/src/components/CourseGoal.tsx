@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React, { FC, PropsWithChildren } from 'react';
 
 // interface CourseGoalProps {
 //   title: string;
@@ -7,9 +7,7 @@ import React, { PropsWithChildren } from 'react';
 
 type CourseGoalProps = PropsWithChildren<{ title: string }>;
 
-const CourseGoal = (props: CourseGoalProps) => {
-  const { title, children } = props;
-
+const CourseGoal: FC<CourseGoalProps> = ({ title, children }) => {
   return (
     <article>
       <div>
