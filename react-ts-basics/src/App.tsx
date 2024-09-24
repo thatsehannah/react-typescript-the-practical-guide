@@ -5,17 +5,13 @@ import goalsImg from './assets/goals.jpg';
 import Header from './components/Header';
 import CourseGoalsList from './components/CourseGoalsList';
 import CourseGoalItem from './interfaces/CourseGoalItem';
+import NewGoal from './components/NewGoal';
 
 const App = () => {
   const [goals, setGoals] = useState<CourseGoalItem[]>([]);
 
-  const handleAddGoal = () => {
+  const handleAddGoal = (newGoal: CourseGoalItem) => {
     setGoals((prevGoals) => {
-      const newGoal: CourseGoalItem = {
-        id: Math.random(),
-        title: 'Learn React + TS',
-        description: 'Learn it in depth!',
-      };
       return [...prevGoals, newGoal];
     });
   };
@@ -29,7 +25,7 @@ const App = () => {
       <Header image={{ src: goalsImg, alt: 'A list of goals' }}>
         <h1>Your Course Goals</h1>
       </Header>
-      <button onClick={handleAddGoal}>Add Goal</button>
+      <NewGoal onAddGoal={handleAddGoal} />
       <CourseGoalsList
         goals={goals}
         onDeleteGoal={handleDeleteGoal}
