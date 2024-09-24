@@ -10,7 +10,13 @@ import NewGoal from './components/NewGoal';
 const App = () => {
   const [goals, setGoals] = useState<CourseGoalItem[]>([]);
 
-  const handleAddGoal = (newGoal: CourseGoalItem) => {
+  const handleAddGoal = (newGoalTitle: string, newGoalDesc: string) => {
+    const newGoal: CourseGoalItem = {
+      id: Math.random(),
+      title: newGoalTitle,
+      description: newGoalDesc,
+    };
+
     setGoals((prevGoals) => {
       return [...prevGoals, newGoal];
     });

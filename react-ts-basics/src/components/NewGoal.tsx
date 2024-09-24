@@ -1,24 +1,21 @@
-import { FC, FormEvent, useState } from 'react';
-import CourseGoalItem from '../interfaces/CourseGoalItem';
+import { FC, FormEvent, useRef } from 'react';
 
 interface NewGoalProps {
-  onAddGoal: (newGoal: CourseGoalItem) => void;
+  onAddGoal: (newGoalTitle: string, newGoalDesc: string) => void;
 }
 
 const NewGoal: FC<NewGoalProps> = ({ onAddGoal }) => {
-  const [title, setTitle] = useState<string>('');
-  const [description, setDescription] = useState<string>('');
+  const titleRef = useRef<HTMLInputElement>(null);
+  const descriptionRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const newGoal: CourseGoalItem = {
-      id: Math.random(),
-      title: title,
-      description: description,
-    };
+    const newGoalTitle = titleRef.current!.value;
+    const newGoalDesc = descriptionRef.current!.value;
 
-    onAddGoal(newGoal);
+    e.currentTarget.reset(); //resets the input elements in the form
+    onAddGoal(newGoalTitle, newGoalDesc);
   };
 
   return (
@@ -28,7 +25,7 @@ const NewGoal: FC<NewGoalProps> = ({ onAddGoal }) => {
         <input
           id='title'
           type='text'
-          onChange={(e) => setTitle(e.target.value)}
+          ref={titleRef}
         />
       </p>
       <p>
@@ -36,11 +33,11 @@ const NewGoal: FC<NewGoalProps> = ({ onAddGoal }) => {
         <input
           id='description'
           type='text'
-          onChange={(e) => setDescription(e.target.value)}
+          ref={descriptionRef}
         />
       </p>
       <p>
-        <button onClick={handleSubmit}>Add Goal</button>
+        <button>Add Goal</button>
       </p>
     </form>
   );
