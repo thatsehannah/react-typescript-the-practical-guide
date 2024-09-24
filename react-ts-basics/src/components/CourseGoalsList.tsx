@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { CourseGoalItem } from '../App';
 import CourseGoal from './CourseGoal';
+import CourseGoalItem from '../interfaces/CourseGoalItem';
 
 interface CourseGoalsListProps {
   goals: CourseGoalItem[];

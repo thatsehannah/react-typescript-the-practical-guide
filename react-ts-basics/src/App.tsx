@@ -4,12 +4,7 @@ import goalsImg from './assets/goals.jpg';
 
 import Header from './components/Header';
 import CourseGoalsList from './components/CourseGoalsList';
-
-export interface CourseGoalItem {
-  title: string;
-  description: string;
-  id: number;
-}
+import CourseGoalItem from './interfaces/CourseGoalItem';
 
 const App = () => {
   const [goals, setGoals] = useState<CourseGoalItem[]>([]);
