@@ -1,6 +1,7 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import CourseGoal from './CourseGoal';
 import CourseGoalItem from '../interfaces/CourseGoalItem';
+import InfoBox from './InfoBox';
 
 interface CourseGoalsListProps {
   goals: CourseGoalItem[];
@@ -8,20 +9,40 @@ interface CourseGoalsListProps {
 }
 
 const CourseGoalsList: FC<CourseGoalsListProps> = ({ goals, onDeleteGoal }) => {
+  if (goals.length === 0) {
+    return (
+      <InfoBox mode='hint'>
+        You have no course goals yet. Start adding now!
+      </InfoBox>
+    );
+  }
+
+  let warningBox: ReactNode;
+  if (goals.length >= 4) {
+    warningBox = (
+      <InfoBox mode='warning'>
+        You're collecting a lot of goals. Don't put too much on your plate!
+      </InfoBox>
+    );
+  }
+
   return (
-    <ul>
-      {goals.map((goal) => (
-        <li key={goal.id}>
-          <CourseGoal
-            id={goal.id}
-            title={goal.title}
-            onDelete={onDeleteGoal}
-          >
-            <p>{goal.description}</p>
-          </CourseGoal>
-        </li>
-      ))}
-    </ul>
+    <>
+      {warningBox}
+      <ul>
+        {goals.map((goal) => (
+          <li key={goal.id}>
+            <CourseGoal
+              id={goal.id}
+              title={goal.title}
+              onDelete={onDeleteGoal}
+            >
+              <p>{goal.description}</p>
+            </CourseGoal>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 
