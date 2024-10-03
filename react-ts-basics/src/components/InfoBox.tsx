@@ -1,15 +1,15 @@
 import { FC, ReactNode } from 'react';
 
-interface HintBoxProps {
+type HintBoxProps = {
   mode: 'hint';
   children: ReactNode;
-}
+};
 
-interface WarningBoxProps {
+type WarningBoxProps = {
   mode: 'warning';
   severity: 'low' | 'medium' | 'high';
   children: ReactNode;
-}
+};
 
 type InfoBoxProps = HintBoxProps | WarningBoxProps;
 

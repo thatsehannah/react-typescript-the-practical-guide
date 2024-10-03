@@ -4,7 +4,7 @@ import goalsImg from './assets/goals.jpg';
 
 import Header from './components/Header';
 import CourseGoalsList from './components/CourseGoalsList';
-import CourseGoalItem from './interfaces/CourseGoalItem';
+import CourseGoalItem from './types/CourseGoalItem';
 import NewGoal from './components/NewGoal';
 
 const App = () => {

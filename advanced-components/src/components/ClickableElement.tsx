@@ -1,12 +1,12 @@
 import { ComponentPropsWithoutRef, FC } from 'react';
 
-interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
+type ButtonProps = {
   element: 'button';
-}
+} & ComponentPropsWithoutRef<'button'>;
 
-interface LinkProps extends ComponentPropsWithoutRef<'a'> {
+type LinkProps = {
   element: 'link';
-}
+} & ComponentPropsWithoutRef<'a'>;
 
 type ClickableElementProps = ButtonProps | LinkProps;
 

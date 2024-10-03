@@ -1,11 +1,11 @@
 import { FC, PropsWithChildren } from 'react';
 
-interface BaseProps {
+type BaseProps = {
   image: {
     src: string;
     alt: string;
   };
-}
+};
 
 type HeaderProps = PropsWithChildren<BaseProps>;
 

@@ -1,9 +1,9 @@
 import { ComponentPropsWithoutRef, FC } from 'react';
 
-interface InputProps extends ComponentPropsWithoutRef<'input'> {
+type InputProps = {
   label: string;
   id: string;
-}
+} & ComponentPropsWithoutRef<'input'>;
 
 const Input: FC<InputProps> = ({ label, id, ...props }) => {
   return (

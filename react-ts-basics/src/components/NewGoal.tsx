@@ -1,8 +1,8 @@
 import { FC, FormEvent, useRef } from 'react';
 
-interface NewGoalProps {
+type NewGoalProps = {
   onAddGoal: (newGoalTitle: string, newGoalDesc: string) => void;
-}
+};
 
 const NewGoal: FC<NewGoalProps> = ({ onAddGoal }) => {
   const titleRef = useRef<HTMLInputElement>(null);

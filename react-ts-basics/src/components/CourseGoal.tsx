@@ -1,10 +1,10 @@
 import { FC, PropsWithChildren } from 'react';
 
-interface BaseProps {
+type BaseProps = {
   id: number;
   title: string;
   onDelete: (id: number) => void;
-}
+};
 
 type CourseGoalProps = PropsWithChildren<BaseProps>;
 

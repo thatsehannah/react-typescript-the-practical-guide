@@ -1,12 +1,12 @@
 import { FC, ReactNode } from 'react';
 import CourseGoal from './CourseGoal';
-import CourseGoalItem from '../interfaces/CourseGoalItem';
+import CourseGoalItem from '../types/CourseGoalItem';
 import InfoBox from './InfoBox';
 
-interface CourseGoalsListProps {
+type CourseGoalsListProps = {
   goals: CourseGoalItem[];
   onDeleteGoal: (id: number) => void;
-}
+};
 
 const CourseGoalsList: FC<CourseGoalsListProps> = ({ goals, onDeleteGoal }) => {
   if (goals.length === 0) {
