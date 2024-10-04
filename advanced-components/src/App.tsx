@@ -1,18 +1,15 @@
-import { FC } from 'react';
-import Container from './components/Container';
-import ClickableElement from './components/ClickableElement';
+import { FC, useRef } from 'react';
+import Input from './components/Input';
 
 const App: FC = () => {
+  const inputRef = useRef<HTMLInputElement>(null);
   return (
     <main>
-      <Container
-        as={ClickableElement}
-        element='link'
-        href='https://thatsehannah.com'
-        target='/'
-      >
-        Click Me
-      </Container>
+      <Input
+        label='Test'
+        id='test'
+        ref={inputRef}
+      />
     </main>
   );
 };
