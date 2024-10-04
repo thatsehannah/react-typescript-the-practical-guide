@@ -1,9 +1,9 @@
-import { forwardRef } from 'react';
+import { ComponentPropsWithoutRef, forwardRef } from 'react';
 
 type InputProps = {
   label: string;
   id: string;
-};
+} & ComponentPropsWithoutRef<'input'>;
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ label, id, ...props }, ref) => {
