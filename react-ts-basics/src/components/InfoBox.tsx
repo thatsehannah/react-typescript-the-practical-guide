@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 type HintBoxProps = {
   mode: 'hint';
@@ -13,7 +13,7 @@ type WarningBoxProps = {
 
 type InfoBoxProps = HintBoxProps | WarningBoxProps;
 
-const InfoBox: FC<InfoBoxProps> = (props) => {
+const InfoBox = (props: InfoBoxProps) => {
   const { mode, children } = props;
 
   switch (mode) {

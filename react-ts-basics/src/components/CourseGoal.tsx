@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 type BaseProps = {
   id: number;
@@ -8,7 +8,7 @@ type BaseProps = {
 
 type CourseGoalProps = PropsWithChildren<BaseProps>;
 
-const CourseGoal: FC<CourseGoalProps> = ({ id, title, onDelete, children }) => {
+const CourseGoal = ({ id, title, onDelete, children }: CourseGoalProps) => {
   return (
     <article>
       <div>

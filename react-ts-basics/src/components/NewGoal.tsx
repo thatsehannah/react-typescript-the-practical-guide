@@ -1,10 +1,10 @@
-import { FC, FormEvent, useRef } from 'react';
+import { FormEvent, useRef } from 'react';
 
 type NewGoalProps = {
   onAddGoal: (newGoalTitle: string, newGoalDesc: string) => void;
 };
 
-const NewGoal: FC<NewGoalProps> = ({ onAddGoal }) => {
+const NewGoal = ({ onAddGoal }: NewGoalProps) => {
   const titleRef = useRef<HTMLInputElement>(null);
   const descriptionRef = useRef<HTMLInputElement>(null);
 

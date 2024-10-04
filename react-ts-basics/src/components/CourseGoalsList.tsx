@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import CourseGoal from './CourseGoal';
 import CourseGoalItem from '../types/CourseGoalItem';
 import InfoBox from './InfoBox';
@@ -8,7 +8,7 @@ type CourseGoalsListProps = {
   onDeleteGoal: (id: number) => void;
 };
 
-const CourseGoalsList: FC<CourseGoalsListProps> = ({ goals, onDeleteGoal }) => {
+const CourseGoalsList = ({ goals, onDeleteGoal }: CourseGoalsListProps) => {
   if (goals.length === 0) {
     return (
       <InfoBox mode='hint'>

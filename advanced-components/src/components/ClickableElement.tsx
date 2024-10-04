@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, FC } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
 type ButtonProps = {
   element: 'button';
@@ -10,7 +10,7 @@ type LinkProps = {
 
 type ClickableElementProps = ButtonProps | LinkProps;
 
-const ClickableElement: FC<ClickableElementProps> = ({ element, ...props }) => {
+const ClickableElement = ({ element, ...props }: ClickableElementProps) => {
   switch (element) {
     case 'link': {
       const { ...linkAttrs } = props as LinkProps;

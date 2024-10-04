@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 type BaseProps = {
   image: {
@@ -9,7 +9,7 @@ type BaseProps = {
 
 type HeaderProps = PropsWithChildren<BaseProps>;
 
-const Header: FC<HeaderProps> = ({ image, children }) => {
+const Header = ({ image, children }: HeaderProps) => {
   return (
     <header>
       <img {...image} />
