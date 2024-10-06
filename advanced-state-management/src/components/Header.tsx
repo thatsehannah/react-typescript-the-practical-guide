@@ -1,4 +1,4 @@
-import Button from './UI/Button.tsx';
+import Button from './ui/Button.tsx';
 
 export default function Header() {
   return (
