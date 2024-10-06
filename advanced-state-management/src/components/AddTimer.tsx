@@ -1,21 +1,24 @@
 import { useRef } from 'react';
 
-import Button from './ui/Button.tsx';
-import Form, { FormHandle } from './ui/Form.tsx';
+import Button from './ui/ClickableElement.tsx';
+import Form from './ui/Form.tsx';
 import Input from './ui/Input.tsx';
+import { FormHandle } from '../types/FormHandle.ts';
 
-export default function AddTimer() {
-  const form = useRef<FormHandle>(null);
+const AddTimer = () => {
+  const formRef = useRef<FormHandle>(null);
+
+  type ExtractedData = { name: string; duration: string };
 
   function handleSaveTimer(data: unknown) {
-    const extractedData = data as { name: string; duration: string };
+    const extractedData = data as ExtractedData;
     console.log(extractedData);
-    form.current?.clear();
+    formRef.current?.clear();
   }
 
   return (
     <Form
-      ref={form}
+      ref={formRef}
       onSave={handleSaveTimer}
       id='add-timer'
     >
@@ -34,4 +37,6 @@ export default function AddTimer() {
       </p>
     </Form>
   );
-}
+};
+
+export default AddTimer;
