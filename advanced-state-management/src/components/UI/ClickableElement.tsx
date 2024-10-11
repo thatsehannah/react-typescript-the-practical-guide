@@ -10,12 +10,12 @@ type LinkProps = ComponentPropsWithoutRef<'a'> & {
 
 type ClickableElementProps = ButtonProps | LinkProps;
 
-const isLinkPropsProps = (props: ClickableElementProps): props is LinkProps => {
+const isLinkProps = (props: ClickableElementProps): props is LinkProps => {
   return 'href' in props;
 };
 
 const ClickableElement = (props: ClickableElementProps) => {
-  if (isLinkPropsProps(props)) {
+  if (isLinkProps(props)) {
     return (
       <a
         className='button'

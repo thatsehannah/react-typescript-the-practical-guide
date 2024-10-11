@@ -1,18 +1,25 @@
 import { useRef } from 'react';
 
-import Button from './ui/ClickableElement.tsx';
+import ClickableElement from './ui/ClickableElement.tsx';
 import Form from './ui/Form.tsx';
 import Input from './ui/Input.tsx';
 import { FormHandle } from '../types/FormHandle.ts';
+import { useTimersContext } from '../state/timers-context.tsx';
+import { Timer } from '../types/Timer.ts';
 
 const AddTimer = () => {
   const formRef = useRef<FormHandle>(null);
-
-  type ExtractedData = { name: string; duration: string };
+  const { addTimer } = useTimersContext();
 
   function handleSaveTimer(data: unknown) {
-    const extractedData = data as ExtractedData;
-    console.log(extractedData);
+    const extractedData = data as { name: string; duration: string };
+    const newTimer: Timer = {
+      name: extractedData.name,
+      duration: +extractedData.duration, //converts the string to a number
+    };
+    console.log(typeof newTimer.duration);
+
+    addTimer(newTimer);
     formRef.current?.clear();
   }
 
@@ -33,7 +40,7 @@ const AddTimer = () => {
         id='duration'
       />
       <p>
-        <Button>Add Timer</Button>
+        <ClickableElement>Add Timer</ClickableElement>
       </p>
     </Form>
   );

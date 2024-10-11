@@ -1,9 +1,11 @@
+import { Timer as TimerProps } from '../types/Timer.ts';
 import Container from './ui/Container.tsx';
 
-const Timer = () => {
+const Timer = ({ name, duration }: TimerProps) => {
   return (
     <Container as='article'>
-      <h2>TODO: TIMER NAME</h2>
+      <h2>{name}</h2>
+      <p>Duration: {duration} seconds</p>
     </Container>
   );
 };

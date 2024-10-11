@@ -1,24 +1,20 @@
 import { createContext, ReactNode, useContext, useReducer } from 'react';
-
-type Timer = {
-  name: string;
-  duration: number;
-};
+import { Timer } from '../types/Timer';
 
 type TimersState = {
   isRunning: boolean;
   timers: Timer[];
 };
 
-const initialState: TimersState = {
-  isRunning: false,
-  timers: [],
-};
-
 type TimersContextType = TimersState & {
   addTimer: (timerData: Timer) => void;
   startTimers: () => void;
   stopTimers: () => void;
+};
+
+const initialState: TimersState = {
+  isRunning: false,
+  timers: [],
 };
 
 //Context
