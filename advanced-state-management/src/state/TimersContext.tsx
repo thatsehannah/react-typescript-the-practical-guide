@@ -24,11 +24,13 @@ const initialState: TimersState = {
   timers: [],
 };
 
+type TimersContextProviderProps = {
+  children: ReactNode;
+};
+
 export const TimersContextProvider = ({
   children,
-}: {
-  children: ReactNode;
-}) => {
+}: TimersContextProviderProps) => {
   const [timersState, dispatch] = useReducer(timersReducer, initialState);
 
   const ctx: TimersContextType = {
