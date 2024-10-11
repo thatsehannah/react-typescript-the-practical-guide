@@ -4,7 +4,7 @@ import ClickableElement from './ui/ClickableElement.tsx';
 import Form from './ui/Form.tsx';
 import Input from './ui/Input.tsx';
 import { FormHandle } from '../types/FormHandle.ts';
-import { useTimersContext } from '../state/timers-context.tsx';
+import { useTimersContext } from '../state/TimersContext.tsx';
 import { Timer } from '../types/Timer.ts';
 
 const AddTimer = () => {

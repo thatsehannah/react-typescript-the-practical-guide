@@ -1,5 +1,5 @@
 import ClickableElement from './ui/ClickableElement.tsx';
-import { useTimersContext } from '../state/timers-context.tsx';
+import { useTimersContext } from '../state/TimersContext.tsx';
 
 export default function Header() {
   const timersCtx = useTimersContext();
