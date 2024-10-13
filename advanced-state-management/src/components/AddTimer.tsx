@@ -13,6 +13,11 @@ const AddTimer = () => {
 
   function handleSaveTimer(data: unknown) {
     const extractedData = data as { name: string; duration: string };
+    if (extractedData.name === '' || extractedData.duration === '') {
+      throw new Error(
+        'Name and/or duration field is empty. Please provide a value.'
+      );
+    }
     const newTimer: Timer = {
       name: extractedData.name,
       duration: +extractedData.duration, //converts the string to a number
