@@ -1,27 +1,31 @@
 import { useEffect, useState } from 'react';
+import { z } from 'zod';
 import { get } from './util/http';
 import { BlogPost } from './types/BlogPost';
 import BlogPosts from './components/BlogPosts';
 import fetchingImg from './assets/data-fetching.png';
 
-type RawDataBlogPost = {
-  id: number;
-  userId: number;
-  title: string;
-  body: string;
-};
+//Creating a schema for the data that's coming back from the API
+const rawDataBlogPostSchema = z.object({
+  id: z.number(),
+  userId: z.number(),
+  title: z.string(),
+  body: z.string(),
+});
+
+const expectedResponseDataSchema = z.array(rawDataBlogPostSchema);
 
 const App = () => {
   const [fetchedPosts, setFetchedPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const data = (await get(
-        'https://jsonplaceholder.typicode.com/posts'
-      )) as RawDataBlogPost[];
+      const data = await get('https://jsonplaceholder.typicode.com/posts');
+
+      const parsedData = expectedResponseDataSchema.parse(data); //will be the type set up in rawDataBlogPostSchema
 
       //Transforming raw data to blog post type
-      const blogPosts: BlogPost[] = data.map((rawPost) => {
+      const blogPosts: BlogPost[] = parsedData.map((rawPost) => {
         return {
           id: rawPost.id,
           title: rawPost.title,
