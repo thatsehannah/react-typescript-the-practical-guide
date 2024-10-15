@@ -17,9 +17,11 @@ const expectedResponseDataSchema = z.array(rawDataBlogPostSchema);
 
 const App = () => {
   const [fetchedPosts, setFetchedPosts] = useState<BlogPost[]>([]);
+  const [isFetching, setIsFetching] = useState(false);
 
   useEffect(() => {
     const fetchPosts = async () => {
+      setIsFetching(true);
       const data = await get('https://jsonplaceholder.typicode.com/posts');
 
       const parsedData = expectedResponseDataSchema.parse(data); //will be the type set up in rawDataBlogPostSchema
@@ -33,6 +35,7 @@ const App = () => {
         };
       });
 
+      setIsFetching(false);
       setFetchedPosts(blogPosts);
     };
 
@@ -44,7 +47,11 @@ const App = () => {
         src={fetchingImg}
         alt='fetching image'
       />
-      <BlogPosts posts={fetchedPosts} />
+      {isFetching ? (
+        <p id='loading-fallback'>Fetching posts...</p>
+      ) : (
+        <BlogPosts posts={fetchedPosts} />
+      )}
     </main>
   );
 };
