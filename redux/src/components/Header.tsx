@@ -1,12 +1,11 @@
 import { useState } from 'react';
 
 import Cart from './Cart.tsx';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store/store.ts';
+import { useAppSelector } from '../store/hooks.ts';
 
 const Header = () => {
   const [cartIsVisible, setCartIsVisible] = useState(false);
-  const cartLength = useSelector((state: RootState) => state.cart.items.length);
+  const cartLength = useAppSelector((state) => state.cart.items.length);
 
   const handleOpenCartClick = () => {
     setCartIsVisible(true);

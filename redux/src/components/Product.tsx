@@ -11,6 +11,7 @@ type ProductProps = {
 
 const Product = ({ id, image, title, price, description }: ProductProps) => {
   const dispatch = useCartDispatch();
+
   const handleAddToCart = () => {
     dispatch(addToCart({ id, title, price }));
   };
