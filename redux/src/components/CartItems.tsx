@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../store/store';
+import { RootState } from '../store/store';
 import { ReactNode } from 'react';
-import { useDispatch } from 'react-redux';
 import { addToCart, removeFromCart } from '../store/cartSlice';
+import { useCartDispatch } from '../store/hooks';
 
 const CartItems = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useCartDispatch();
   const formattedTotalPrice = cartItems
     .reduce((total, current) => total + current.price * current.quantity, 0)
     .toFixed(2);
