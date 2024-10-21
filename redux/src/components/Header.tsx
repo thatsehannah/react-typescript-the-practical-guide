@@ -1,10 +1,12 @@
 import { useState } from 'react';
 
 import Cart from './Cart.tsx';
-import { useAppSelector } from '../store/hooks.ts';
+import { useAppSelector, useCartDispatch } from '../store/hooks.ts';
+import { clearCart } from '../store/cartSlice.ts';
 
 const Header = () => {
   const [cartIsVisible, setCartIsVisible] = useState(false);
+  const dispatch = useCartDispatch();
   const totalQty = useAppSelector((state) =>
     state.cart.items.reduce((total, item) => total + item.quantity, 0)
   );
@@ -17,9 +19,18 @@ const Header = () => {
     setCartIsVisible(false);
   };
 
+  const handleCartReset = () => {
+    dispatch(clearCart());
+  };
+
   return (
     <>
-      {cartIsVisible && <Cart onClose={handleCloseCartClick} />}
+      {cartIsVisible && (
+        <Cart
+          onClose={handleCloseCartClick}
+          onClearCart={handleCartReset}
+        />
+      )}
       <header id='main-header'>
         <div id='main-title'>
           <img

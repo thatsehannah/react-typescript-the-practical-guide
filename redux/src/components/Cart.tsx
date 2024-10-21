@@ -4,9 +4,10 @@ import CartItems from './CartItems.tsx';
 
 type CartProps = {
   onClose: () => void;
+  onClearCart: () => void;
 };
 
-const Cart = ({ onClose }: CartProps) => {
+const Cart = ({ onClose, onClearCart }: CartProps) => {
   return createPortal(
     <>
       <div className='cart-backdrop' />
@@ -17,6 +18,7 @@ const Cart = ({ onClose }: CartProps) => {
         <h2>Your Cart</h2>
         <CartItems />
         <p id='cart-actions'>
+          <button onClick={onClearCart}>Clear</button>
           <button onClick={onClose}>Close</button>
         </p>
       </dialog>

@@ -40,8 +40,13 @@ const cartSlice = createSlice({
         state.items[itemIndex].quantity--;
       }
     },
+    clearCart(state: CartState) {
+      if (state.items.length > 0) {
+        state.items.length = 0;
+      }
+    },
   },
 });
 
-export const { addToCart, removeFromCart } = cartSlice.actions; //action creators
+export const { addToCart, removeFromCart, clearCart } = cartSlice.actions; //action creators
 export default cartSlice.reducer; //Exporting the reducer, which is used in the store
