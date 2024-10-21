@@ -3,7 +3,6 @@ import { AppDispatch, RootState } from '../store/store';
 import { ReactNode } from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart, removeFromCart } from '../store/cartSlice';
-import { Product } from '../types/Product';
 
 const CartItems = () => {
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -16,7 +15,11 @@ const CartItems = () => {
     dispatch(removeFromCart(id));
   };
 
-  const handleAddToCart = (item: Product) => {
+  const handleAddToCart = (item: {
+    id: string;
+    title: string;
+    price: number;
+  }) => {
     dispatch(addToCart(item));
   };
 

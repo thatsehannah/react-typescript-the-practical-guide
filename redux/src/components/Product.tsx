@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../store/store';
-import { Product as NewProduct } from '../types/Product';
 import { addToCart } from '../store/cartSlice';
 
 type ProductProps = {
@@ -11,15 +10,10 @@ type ProductProps = {
   description: string;
 };
 
-const Product = ({ image, title, price, description }: ProductProps) => {
+const Product = ({ id, image, title, price, description }: ProductProps) => {
   const dispatch = useDispatch<AppDispatch>();
   const handleAddToCart = () => {
-    const product: NewProduct = {
-      id: title,
-      title,
-      price,
-    };
-    dispatch(addToCart(product));
+    dispatch(addToCart({ id, title, price }));
   };
 
   return (
