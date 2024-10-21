@@ -13,6 +13,7 @@ const Product = ({ id, image, title, price, description }: ProductProps) => {
   const dispatch = useCartDispatch();
 
   const handleAddToCart = () => {
+    alert(`${title} added to cart`);
     dispatch(addToCart({ id, title, price }));
   };
 

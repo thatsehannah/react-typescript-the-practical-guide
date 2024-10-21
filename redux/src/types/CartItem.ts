@@ -4,3 +4,5 @@ export type CartItem = {
   price: number;
   quantity: number;
 };
+
+export type CartItemNoQty = Omit<CartItem, 'quantity'>;

@@ -5,7 +5,9 @@ import { useAppSelector } from '../store/hooks.ts';
 
 const Header = () => {
   const [cartIsVisible, setCartIsVisible] = useState(false);
-  const cartLength = useAppSelector((state) => state.cart.items.length);
+  const totalQty = useAppSelector((state) =>
+    state.cart.items.reduce((total, item) => total + item.quantity, 0)
+  );
 
   const handleOpenCartClick = () => {
     setCartIsVisible(true);
@@ -27,7 +29,7 @@ const Header = () => {
           <h1>Elegant Redux</h1>
         </div>
         <p>
-          <button onClick={handleOpenCartClick}>Cart ({cartLength})</button>
+          <button onClick={handleOpenCartClick}>Cart ({totalQty})</button>
         </p>
       </header>
     </>

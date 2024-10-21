@@ -1,24 +1,21 @@
 import { ReactNode } from 'react';
 import { addToCart, removeFromCart } from '../store/cartSlice';
 import { useAppSelector, useCartDispatch } from '../store/hooks';
+import { CartItemNoQty } from '../types/CartItem';
 
 const CartItems = () => {
   const cartItems = useAppSelector((state) => state.cart.items);
   const dispatch = useCartDispatch();
 
   const formattedTotalPrice = cartItems
-    .reduce((total, current) => total + current.price * current.quantity, 0)
+    .reduce((total, item) => total + item.price * item.quantity, 0)
     .toFixed(2);
 
   const handleRemoveFromCart = (id: string) => {
     dispatch(removeFromCart(id));
   };
 
-  const handleAddToCart = (item: {
-    id: string;
-    title: string;
-    price: number;
-  }) => {
+  const handleAddToCart = (item: CartItemNoQty) => {
     dispatch(addToCart(item));
   };
 
@@ -54,7 +51,7 @@ const CartItems = () => {
     <div id='cart'>
       {content}
       <p id='cart-total-price'>
-        Cart Total: <strong>{formattedTotalPrice}</strong>
+        Cart Total: $<strong>{formattedTotalPrice}</strong>
       </p>
     </div>
   );

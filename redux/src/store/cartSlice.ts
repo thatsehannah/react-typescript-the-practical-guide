@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { CartItem } from '../types/CartItem';
+import { CartItem, CartItemNoQty } from '../types/CartItem';
 
 type CartState = {
   items: CartItem[];
@@ -15,10 +15,7 @@ const cartSlice = createSlice({
   reducers: {
     //adding items to the cart
     //PayloadAction is essential of type CartItem without the quantity property
-    addToCart(
-      state: CartState,
-      action: PayloadAction<{ id: string; title: string; price: number }>
-    ) {
+    addToCart(state: CartState, action: PayloadAction<CartItemNoQty>) {
       const itemIndex = state.items.findIndex(
         (item) => item.id === action.payload.id
       );
